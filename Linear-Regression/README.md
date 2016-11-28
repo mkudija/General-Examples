@@ -4,4 +4,4 @@
 
 See [`Linear-Regression.ipynb`](https://github.com/mkudija/General-Examples/blob/master/Linear-Regression/Linear-Regression.ipynb).
 
-![Stock Time Series](https://github.com/mkudija/General-Examples/blob/master/Time-Series/time-series.png "Stock Time Series")
+![Simple Linear Regression](https://github.com/mkudija/General-Examples/blob/master/Linear-Regression/simple-linear-regression.png "Simple Linear Regression")
