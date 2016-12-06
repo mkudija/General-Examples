@@ -6,9 +6,12 @@
 
 ## Pandas
 #### Load data
+
 #### Select/Filter data
 #### Split dataframe
 #### Concatenate dataframe
+#### Add row to dataframe
+[Linear-Regression.ipynb](https://github.com/mkudija/General-Examples/blob/master/Linear-Regression/Linear-Regression.ipynb): `df.loc[31] = [0, 'Male', 'Assistant', 'Business', 4, 4.33]`
 #### Pivot Table
 
 
