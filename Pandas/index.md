@@ -1,4 +1,4 @@
-# Index, Select, and Filter Pandas Dataframe
+# Index Pandas Dataframe
 
 See the [Pandas Documentation](https://pandas.pydata.org/pandas-docs/stable/indexing.html)
 
@@ -9,15 +9,7 @@ See the [Pandas Documentation](https://pandas.pydata.org/pandas-docs/stable/inde
 `.iloc` is primarily *integer position*-based
 
 
-## Select
-
-
-## Filter
-
-
-
-
 |         | Column by Position   | Column by Label  |
 | ------------- |:-------------:|:-----:|
-| **Row by position** | *add* | `df.loc[df.index[row],'column_name'] |
-| **Row by label**    | *add* | *add* |
+| **Row by Position** | `df.iloc[2,3]` | `df.loc[df.index[row],'column_name']` |
+| **Row by Label**    | *?* | `df.loc['row_name','column_name']` |
