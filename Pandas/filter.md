@@ -19,6 +19,7 @@ fleet_ukn = fleet[(fleet['OperatorCountry']=='United Kingdom') | (fleet['Operato
 ft_less = ft[ft['Size-TRB'].isin(['1-Heavy','3-Medium','4-Lt. Twin']) & 
              ft.BuildRegion.isin(['Western']) & 
              ft.OperatorCategory.isin(['Civil']) & 
-             ft.AircraftStatus.isin(['In Service','Storage'])
+             ft.AircraftStatus.isin(['In Service','Storage']) & 
+             ~ft['Mission'].isin(['SAR'])
             ]
 ```
