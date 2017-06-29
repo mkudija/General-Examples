@@ -13,7 +13,6 @@ See the [`pandas.read_excel`](https://pandas.pydata.org/pandas-docs/stable/gener
 df = pd.read_excel('path/file.xlsx')
 ```
 
-
 ### Specify Sheetname
 ```python
 df = pd.read_excel('path/file.xlsx',
@@ -38,6 +37,15 @@ To skip the last *n* (1 in this example) rows:
 df = pd.read_excel('path/file.xlsx',
                    skip_footer=1)
 ```
+
+### Specify Column Data Type
+To specify the dtype of a column, use converters:
+```python
+df = pd.read_excel('path/file.xlsx',
+                   converters={'Serial No':str},'Delivery Year':int)
+```
+
+
 
 ### Full Example
 In this example, we import a file, skipping the first two rows and last row from a particular sheetname, and drop an unnamed column:
