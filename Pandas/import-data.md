@@ -42,7 +42,7 @@ df = pd.read_excel('path/file.xlsx',
 To specify the dtype of a column, use converters:
 ```python
 df = pd.read_excel('path/file.xlsx',
-                   converters={'Serial No':str},'Delivery Year':int)
+                   converters={'MSN':str,'YOM':int})
 ```
 
 
