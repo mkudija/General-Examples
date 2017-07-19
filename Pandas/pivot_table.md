@@ -1,6 +1,6 @@
 # Pandas `pivot_table`
 Date: 2017-07-18
-Tags: Python, pandas
+Tags: Python, pandas, pd.pivot_table, pd.concat
 
 ### References:
 - Pandas [`pivot_table` documentation](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.pivot_table.html)
@@ -29,11 +29,10 @@ Some notes:
 Making a pivot table is usually easy enough, but I often find myself needing to perform a number of operations to get exactly the desired cut of data.
 
 ### Reordering Level Index
-Changing 
-So instead of:
+We may want to reorder the level index. For example, instead of:
 <table>
   <tr>
-    <td colspan="3">CMV</td>
+    <td colspan="3">CMV</td>B
     <td colspan="3">2017</td>
     <td colspan="3">2032</td>
   </tr>
@@ -70,7 +69,9 @@ So instead of:
   </tr>
 </table>
 
+I am not aware of an easy way to do this. Because `CMV`,`2017`, and `2032` are columns and not labels in a column like `appraiser` (which has labels of Ascend, Helivalues, and IBA), we cannot simply create pivot colums from these.
 
+Therefore the method given in the below example is to create dfs individually with the top level filter (`appraiser`) and then concatenate. Each df is housed in the dictionary `tables`, from which we concatenate the final dataframe. Note the use of `keys` in concatenation to label these top level columns.
 
 ```python
 tables = {}
