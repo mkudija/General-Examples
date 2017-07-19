@@ -3,7 +3,7 @@ Date: 2017-07-18
 Tags: Python, pandas
 
 ### References:
-- Pandas [`pivot_table`](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.pivot_table.html)
+- Pandas [`pivot_table` documentation](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.pivot_table.html)
 - See [Pandas Pivot Table Explained](http://pbpython.com/pandas-pivot-table-explained.html) from Practical Business Python for a helpful overview.
 
 ### Simple Pivot Table
