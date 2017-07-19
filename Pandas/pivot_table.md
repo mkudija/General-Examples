@@ -30,9 +30,10 @@ Making a pivot table is usually easy enough, but I often find myself needing to 
 
 ### Reordering Level Index
 We may want to reorder the level index. For example, instead of:
+
 <table>
   <tr>
-    <td colspan="3">CMV</td>B
+    <td colspan="3">CMV</td>
     <td colspan="3">2017</td>
     <td colspan="3">2032</td>
   </tr>
