@@ -35,6 +35,11 @@ The easiest way to get rid of the extra column headers created from the `aggfunc
 table2017.columns = table2017.columns.droplevel(1)
 ```
 
+You can repeat if you need to drop multiple levels:
+```python
+missionSum.columns = missionSum.columns.droplevel(0).droplevel(0)
+```
+
 ### Reordering Level Index
 We may want to reorder the level index. For example, instead of:
 
