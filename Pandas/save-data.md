@@ -23,11 +23,15 @@ df.to_excel(writer, sheet_name=sheetname, index=False)
 # get xlsxwriter objects
 workbook  = writer.book
 worksheet = writer.sheets[sheetname]
+worksheet.hide_gridlines(2)
 
 # define formats
+date_fmt = workbook.add_format({'align': 'center', 'num_format': 'yyyy-mm-dd'})
 center_fmt = workbook.add_format({'align': 'center'})
 number_fmt = workbook.add_format({'align': 'center', 'num_format': '#,##0.000'})
+cur_fmt = workbook.add_format({'align': 'center', 'num_format': '$#,##0.00'})
 perc_fmt = workbook.add_format({'align': 'center', 'num_format': '0%'})
+grey_fmt = workbook.add_format({'font_color': '#B1B3B3'})
 
 # set column width and format over columns
 worksheet.set_column('A:A', 13, center_fmt)
