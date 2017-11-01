@@ -22,3 +22,22 @@ df = pd.DataFrame(index=range(0,1), columns=columns).fillna(0)
 0      0      0      0      0      0
 
 ```
+# Create Dictionary of DataFrames In For Loop
+It is often useful to create multiple DataFrames in a for loop. For instance, in this example we have a DataFrame `table` that was created using the Pandas `pivot_table` method. We want to create a new DataFrame for several filters of the current DataFrame. We create a dictionary `pivots` that we can fill with these resulting DataFrames.
+
+```python
+pivots = {}
+for msn in msn_list:
+    conditions = 'SerialNo == ["' + str(msn) + '"]'
+    pivots[msn] = table.query(conditions)
+
+```
+
+# Concat DataFrames in Dictionary
+```FlightIDs``` is a dictionary of DataFrames
+
+```python
+dfFlightIDs = pd.concat(FlightIDs.values(), ignore_index=True)
+```
+
+tags: python, pandas, filter, query, pivot
