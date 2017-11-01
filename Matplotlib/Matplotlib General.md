@@ -45,3 +45,18 @@ plt.gca().xaxis.grid(linestyle='-.',linewidth=.25)
 ```python
 plt.savefig(path,bbox_inches='tight')
 ```
+
+# Text & Annotations
+## Chart Footer Notes
+Often you will want to add chart footer notes, which may include data source, date updated, filters applied, etc. Since the range of the chart may vary based on the data, it is preferable to specify the location of these footer notes relative to the figure or axes instead of the data contained. You can do this with [`ax.annotate()`](https://matplotlib.org/users/annotations_intro.html). In this example we specify relative to `axes fraction` but other options are available. 
+
+```python
+ax.annotate('Filter: '+filtersStr, xy=(0, 0),  xycoords='figure fraction',
+        xytext=(0.0, -0.2), textcoords='axes fraction',
+        horizontalalignment='left', verticalalignment='center',
+        )
+```
+
+Note that if you are just placing text, the position of the thing being annotated, `xy=(0,0)`, doesn't matter.
+
+
