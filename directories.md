@@ -26,7 +26,7 @@ dir_2017        = os.getcwd()
 os.chdir('..')
 par_dir         = os.path.abspath(os.curdir)
 ```
-## GitHubPath
+## GitHubPath (`os`)
 
 In:
 ```python
@@ -53,5 +53,37 @@ Out:
 ```
 C:/Users/<id>/Documents/GitHub/
 ```
+
+## GitHubPath (`Pathlib`)
+Pathlib is  helpful because it works across operating systems.
+
+In:
+```python
+>>> from pathlib import Path
+>>> print(Path.cwd())
+```
+Out:
+```
+/Users/matthewkudija/Documents/GitHub/Aircraft-Data/Utilization/Scripts
+```
+
+We want the root GitHub directory `/Users/matthewkudija/Documents/GitHub/`, which we get using this:
+
+In:
+```python
+from pathlib import Path
+cwd = Path.cwd()
+for parent in cwd.parents:
+  if str(parent)[-6:]=='GitHub':
+    GitHubPath = parent
+
+print('GitHubPath:        {}'.format(GitHubPath))
+print('Type GitHubPath:   {}'.format(type(GitHubPath)))
+```
+
+Out:
+```
+GitHubPath:        /Users/matthewkudija/Documents/GitHub
+Type GitHubPath:   <class 'pathlib.PosixPath'>```
 
 
