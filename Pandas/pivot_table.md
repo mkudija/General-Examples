@@ -179,3 +179,11 @@ tablePrint.head()
 I replace the labels `2018` and `2019` with $ Diff and % Diff in the Excel final product.
 
 This method is not elegant, and I would love to find a better way. However, it performs *most* of what is needed to do automatically. The remaining manual step is to sort the table by `=concatenate(Aircraft Type, " - ", Year)` in Excel and past the values into the pre-formatted template, without having to worry about the calculations.
+
+# `groupby`
+## Basic Groupby
+This gives a pivoted view, taking the mean or sum of `Actuals` aggregated by `Expenditure Type` and `Model and Series`.
+```python
+pivot_mean = df.groupby(['Expenditure Type','Model and Series'])['Actuals'].mean()
+pivot_sum = df.groupby(['Expenditure Type','Model and Series'])['Actuals'].sum()
+```
