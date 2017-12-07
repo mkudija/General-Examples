@@ -1,5 +1,12 @@
 # Save Data from Pandas to File
 
+## XLSX
+```python
+writer = pd.ExcelWriter('name.xlsx')
+df.to_excel(writer, sheet_name='Sheet 1', index=False)
+writer.save()
+```
+
 ## CSV or XLSX
 ```python
 save = 'xls'
