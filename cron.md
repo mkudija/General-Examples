@@ -33,8 +33,6 @@ To add a new one (think this works):
 - Paste `15 09 * * * /Users/matthewkudija/anaconda3/bin/python /Users/matthewkudija/Documents/GitHub/MILE_Data/MILE_file_copy.py`
 - Press `esc` to go back to command mode
 - Press `Shift+ZZ` to save and close
+ 
 
-
-Then 
-
-see vi editor info [here](https://kb.iu.edu/d/adxz)
+Note: see vi editor info [here](https://kb.iu.edu/d/adxz)
