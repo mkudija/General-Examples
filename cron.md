@@ -35,4 +35,6 @@ To add a new one (think this works):
 - Press `Shift+ZZ` to save and close
  
 
-Note: see vi editor info [here](https://kb.iu.edu/d/adxz)
+Note: 
+- see vi editor info [here](https://kb.iu.edu/d/adxz)
+- [Crontab reference](http://www.adminschoice.com/crontab-quick-reference)
