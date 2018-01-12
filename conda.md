@@ -29,3 +29,14 @@ Note: the environment name is defined in the `environment.yml` so no need to spe
 
 ### Remove environment
 `conda remove --name myenv --all`
+
+## History
+You can see the history by running:
+
+`conda list --revisions`
+
+...and update to a previous revision by running:
+
+`conda install --revision 1`
+
+See more [here](http://blog.rtwilson.com/conda-revisions-letting-you-rollback-to-a-previous-version-of-your-environment/)
