@@ -34,6 +34,8 @@ To add a new one (think this works):
 - Press `esc` to go back to command mode
 - Press `Shift+ZZ` to save and close
  
+To see your mail:
+`/var/mail/matthewkudija`
 
 Note: 
 - see vi editor info [here](https://kb.iu.edu/d/adxz)
