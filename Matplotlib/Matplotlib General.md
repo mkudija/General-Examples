@@ -51,6 +51,13 @@ plt.ylim(ymin=0) # yaxis min
 plt.savefig(path,bbox_inches='tight')
 ```
 
+or 
+
+```python
+fig = ax.get_figure()
+fig.savefig(savePath, bbox_inches='tight', dpi=300) 
+```
+
 # Text & Annotations
 ## Chart Footer Notes
 Often you will want to add chart footer notes, which may include data source, date updated, filters applied, etc. Since the range of the chart may vary based on the data, it is preferable to specify the location of these footer notes relative to the figure or axes instead of the data contained. You can do this with [`ax.annotate()`](https://matplotlib.org/users/annotations_intro.html). In this example we specify relative to `axes fraction` but other options are available. 
