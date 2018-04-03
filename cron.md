@@ -37,6 +37,9 @@ To add a new one (think this works):
 To see your mail:
 `/var/mail/matthewkudija`
 
+To delete your mail:
+`sudo rm /var/mail/matthewkudija`
+
 Note: 
 - see vi editor info [here](https://kb.iu.edu/d/adxz)
 - [Crontab reference](http://www.adminschoice.com/crontab-quick-reference)

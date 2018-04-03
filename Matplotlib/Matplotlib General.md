@@ -41,9 +41,21 @@ plt.gca().xaxis.grid(False)
 plt.gca().xaxis.grid(linestyle='-.',linewidth=.25)
 ```
 
+## Axis Minimum
+```python
+plt.ylim(ymin=0) # yaxis min
+```
+
 # Save Fig
 ```python
 plt.savefig(path,bbox_inches='tight')
+```
+
+or 
+
+```python
+fig = ax.get_figure()
+fig.savefig(savePath, bbox_inches='tight', dpi=300) 
 ```
 
 # Text & Annotations
