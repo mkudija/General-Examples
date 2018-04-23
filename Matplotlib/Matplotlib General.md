@@ -71,4 +71,9 @@ ax.annotate('Filter: '+filtersStr, xy=(0, 0),  xycoords='figure fraction',
 
 Note that if you are just placing text, the position of the thing being annotated, `xy=(0,0)`, doesn't matter.
 
+# Legend
+## Legend outside of plot
+```python
+plt.legend(loc="upper left", bbox_to_anchor=(1,1))
+```
 
