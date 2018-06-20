@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .vega-actions a {
+        margin-right: 12px;
+        color: #757575;
+        font-weight: normal;
+        font-size: 13px;
+    }
+    .error {
+        color: red;
+    }
+  </style>
+
+<script src="https://cdn.jsdelivr.net/npm//vega@3.3.1"></script>
+<script src="https://cdn.jsdelivr.net/npm//vega-lite@2.4.3"></script>
+<script src="https://cdn.jsdelivr.net/npm//vega-embed@3.11"></script>
+
+</head>
+<body>
+  <div id="vis"></div>
+  <script type="text/javascript">
+    var spec = {"config": {"view": {"width": 400, "height": 300}}, "layer": [{"data": {"url": "https://vega.github.io/vega-datasets/data/us-10m.json", "format": {"feature": "states", "type": "topojson"}}, "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}, "height": 500, "projection": {"type": "albersUsa"}, "width": 800}, {"data": {"url": "https://vega.github.io/vega-datasets/data/airports.csv"}, "mark": "circle", "encoding": {"color": {"value": "#3377B3"}, "latitude": {"type": "quantitative", "field": "latitude"}, "longitude": {"type": "quantitative", "field": "longitude"}, "size": {"value": 15}, "tooltip": [{"type": "nominal", "field": "iata"}, {"type": "nominal", "field": "name"}, {"type": "nominal", "field": "city"}, {"type": "nominal", "field": "state"}, {"type": "quantitative", "field": "latitude"}, {"type": "quantitative", "field": "longitude"}]}}], "$schema": "https://vega.github.io/schema/vega-lite/v2.4.3.json"};
+    var embed_opt = {"mode": "vega-lite"};
+
+    function showError(el, error){
+        el.innerHTML = ('<div class="error">'
+                        + '<p>JavaScript Error: ' + error.message + '</p>'
+                        + "<p>This usually means there's a typo in your chart specification. "
+                        + "See the javascript console for the full traceback.</p>"
+                        + '</div>');
+        throw error;
+    }
+    const el = document.getElementById('vis');
+    vegaEmbed("#vis", spec, embed_opt)
+      .catch(error => showError(el, error));
+  </script>
+</body>
+</html>
