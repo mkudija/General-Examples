@@ -27,6 +27,16 @@ Every day at 9:15:
 crontab 15 09 * * * /Users/matthewkudija/anaconda3/bin/python /path/to/script
 ```
 
+Every 3 days:
+```
+0 0 */3 * * /Users/matthewkudija/anaconda3/bin/python /Users/matthewkudija/Documents/GitHub/Aircraft-Data/Utilization/pyflightdata/scripts/pyflightdata_92.py
+```
+
+Every 20 minutes:
+```
+*/20 * * * * /Users/matthewkudija/anaconda3/bin/python /Users/matthewkudija/Documents/GitHub/Aircraft-Data/Utilization/ADS-BExchange/scripts/get_aircraft_data.py
+```
+
 To add a new one (think this works):
 - Open editor: `crontab -e`
 - It opens command mode, so type `i` to insert or `a` to append
