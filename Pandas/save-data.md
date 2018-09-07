@@ -7,6 +7,17 @@ df.to_excel(writer, sheet_name='Sheet 1', index=False)
 writer.save()
 ```
 
+or with date:
+
+```python
+import datetime
+date = datetime.datetime.now().strftime('%Y-%m-%d_')
+writer = pd.ExcelWriter(date+'name.xlsx')
+df.to_excel(writer, sheet_name='Sheet 1', index=False)
+writer.save()
+```
+
+
 ## CSV or XLSX
 ```python
 save = 'xls'
