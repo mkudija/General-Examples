@@ -41,3 +41,19 @@ dfFlightIDs = pd.concat(FlightIDs.values(), ignore_index=True)
 ```
 
 tags: python, pandas, filter, query, pivot
+
+# Concat all files in directory to DF
+```python
+import pandas as pd
+from pathlib import Path
+
+# get files
+p = Path('../data').glob('**/*')
+files = [x for x in p if x.is_file() and x.suffix=='.csv']
+
+# concat files
+dfs = {}
+for index, value in enumerate(files):
+    dfs[value] = pd.read_csv(files[index])
+df = pd.concat(dfs.values(), ignore_index=True)
+```
