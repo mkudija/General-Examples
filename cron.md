@@ -12,6 +12,8 @@ man crontab
 
 ## Scheduling 
 
+**Use this site for help scheduling at a particular time: [https://crontab.guru/](https://crontab.guru/)**
+
 Every hour:
 ```
 crontab 0 * * * * /Users/matthewkudija/anaconda3/bin/python /path/to/script
