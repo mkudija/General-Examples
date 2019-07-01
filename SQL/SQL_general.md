@@ -39,3 +39,15 @@ ORDER BY value_count DESC
 | 3 | iPhone10,4 | 3487  |
 | 4 | iPhone10,3 | 3078  |
 | 5 | iPhone10,1 | 23    |
+
+
+## `np.where` equivalent for cases
+
+```SQL
+CASE
+    WHEN t.score BETWEEN 0  AND 24  THEN '0-24'
+    WHEN t.score BETWEEN 25 AND 49  THEN '25-49'
+    WHEN t.score BETWEEN 50 AND 74  THEN '50-74'
+    WHEN t.score BETWEEN 75 AND 100 THEN '75-100'
+END AS score_group
+```
