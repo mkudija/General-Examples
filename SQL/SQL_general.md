@@ -51,3 +51,23 @@ CASE
     WHEN t.score BETWEEN 75 AND 100 THEN '75-100'
 END AS score_group
 ```
+
+
+## Select only first/last record using `RANK() OVER PARTITION BY`
+
+In this example, there may be many records for a given `user_id`, but we only want to select the most recent record for each `user_id`. Alternatively, we could select the first record by using `ASC`:
+
+```SQL
+SELECT
+    ...
+    ...
+    FROM(
+    SELECT
+        ...
+	...
+        ,RANK() OVER (PARTITION BY t.user_id ORDER BY t.created_at DESC) AS RANK
+        FROM
+            database.table AS t
+    )
+WHERE RANK = 1
+```
