@@ -1,0 +1,252 @@
+{
+    "name" : "MAG Snippets",
+    "sub-menu" : [
+        {
+            "name" : "General",
+            "sub-menu" : [
+                {
+                    "name" : "watermark",
+                    "snippet" : ["import pandas as pd",
+                        "import numpy as np",
+                        "",
+                        "%load_ext watermark",
+                        "%watermark -iv"
+                    ]
+                },
+                {
+                    "name" : "GitHubPath",
+                    "snippet" : ["from pathlib import Path",
+                        "for parent in Path.cwd().parents:",
+                        "    if str(parent)[-6:]=='GitHub':",
+                        "        GitHubPath = parent"
+                    ]
+                },
+                {
+                    "name" : "BoxSyncPath",
+                    "snippet" : ["from pathlib import Path",
+                        "for child in Path.cwd().home().iterdir():",
+                        "    if child.name=='Box Sync':",
+                        "        BoxSyncPath = child"
+                    ]
+                },
+                {
+                    "name" : "homePath",
+                    "snippet" : ["homePath = Path.cwd().home()"
+                    ]
+                },
+                {
+                    "name" : "currentYear",
+                    "snippet" : ["import datetime as datetime",
+                        "date = datetime.datetime.now().date()",
+                        "currentYear = date.year"
+                    ]
+                }
+            ]
+        },
+        {
+            "name" : "Import Data",
+            "sub-menu" : [
+                {
+                    "name" : "Ascend",
+                    "sub-menu" : [
+                        {
+                            "name" : "Fleet",
+                            "snippet" : ["import pandas as pd",
+                                "df = pd.read_pickle(GitHubPath/'Aircraft-Data/Data/Ascend-Data/COMPLETE/pickle/FLEET DATABASE.p')",
+                                "df = df[df.BuildRegion.isin(['Western']) & ",
+                                "        df.OperatorCategory.isin(['Civil']) & ",
+                                "        df.AircraftStatus.isin(['In Service','Storage']) & ",
+                                "        ~df['Mission'].isin(['Military'])",
+                                "        ]",
+                                "df.head()"
+                            ]
+                        },
+                        {
+                            "name" : "Orders",
+                            "snippet" : ["import pandas as pd",
+                                "df = pd.read_pickle(GitHubPath/'Aircraft-Data/Data/Ascend-Data/COMPLETE/pickle/ORDERS DATABASE.p')",
+                                "df = df[df.BuildRegion.isin(['Western']) & ",
+                                "        df.OperatorCategory.isin(['Civil']) & ",
+                                "        df['TransactionType(OrderTypeSwap)'].isin(['Order'])",
+                                "        ]",
+                                "df.head()"
+                            ]
+                        },
+                        {
+                            "name" : "Deliveries",
+                            "snippet" : ["import pandas as pd",
+                                "df = pd.read_pickle(GitHubPath/'Aircraft-Data/Data/Ascend-Data/COMPLETE/pickle/DELIVERIES DATABASE.p')",
+                                "df = df[df.BuildRegion.isin(['Western']) & ",
+                                "        df.OperatorCategory.isin(['Civil']) & ",
+                                "        ~df['Mission'].isin(['Military'])",
+                                "        ]",
+                                "df.head()"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name" : "Asset Book Master Live",
+                    "snippet" : ["import pandas as pd",
+                        "df = pd.read_pickle(BoxSyncPath/'MilestoneData/pickle/Asset Book Master Live_Asset Book.p')",
+                        "df.head()"
+                    ]
+                },
+                {
+                    "name" : "ValueData",
+                    "snippet" : ["import pandas as pd",
+                        "df = pd.read_pickle(BoxSyncPath/'MilestoneData/pickle/ValueData.p')",
+                        "df = df[df['Appraiser'].isin(['Ascend'])",
+                        "        & df['ID'].str.contains('MAG180207-1') ",
+                        "        & df['Future Value Adjustment'].str.contains('Full') ",
+                        "       ]",
+                        "df.head()"
+                    ]
+                },
+                {
+                    "name" : "MILE_001_Portfolio_Listing",
+                    "snippet" : ["import pandas as pd",
+                        "# df = (pd.read_pickle(BoxSyncPath/'MilestoneData/pickle/MILE_001_Portfolio_Listing_Milestone Lease Summary.p'",
+                        "df = (pd.read_pickle(BoxSyncPath/'MilestoneData/pickle/MILE_001_Portfolio_Listing_Milestone Asset Listing.p'",
+                        "            )",
+                        "            .drop('Unnamed: 0',axis=1)",
+                        "            .fillna(''))",
+                        "df = df[df['Portfolio Status'].isin(['Current']) &",
+                        "        df['Asset Type'].isin(['Helicopter'])",
+                        "       ]",
+                        "df.head()"
+                    ]
+                },
+                {
+                    "name" : "MILE_035_Asset_Component_Config",
+                    "snippet" : ["import pandas as pd",
+                        "df = (pd.read_pickle(BoxSyncPath/'MilestoneData/pickle/MILE_035_Asset_Component_Config_Config Components.p'",
+                        "            )",
+                        "            .drop('Unnamed: 0',axis=1)",
+                        "            .fillna(''))",
+                        "df.head()"
+                    ]
+                }
+            ]
+},
+{
+    "name" : "Export Data",
+    "sub-menu" : [
+        {
+            "name" : "Excel",
+            "snippet" : ["writer = pd.ExcelWriter('name.xlsx')",
+                "df.to_excel(writer, sheet_name='SheetName', index=False)",
+                "writer.save()"
+            ]
+        },
+        {
+            "name": "Excel (date)",
+            "snippet": [
+                "import datetime",
+                "date = datetime.datetime.now().strftime('%Y-%m-%d_')",
+                "#date = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M_')",
+                "writer = pd.ExcelWriter(date+'name.xlsx')",
+                "df.to_excel(writer, sheet_name='SheetName', index=False)",
+                "writer.save()"
+            ]
+        },
+        {
+            "name" : "CSV",
+            "snippet" : ["df.to_csv('name.csv', index=False)"
+            ]
+        }
+    ]
+},
+{
+    "name" : "Pandas",
+    "sub-menu" : [
+        {
+            "name" : "DataFrame (empty)",
+            "snippet" : ["cols = ['Col 1','Col 2','Col 3','Col 4','Col 5']",
+                "df = pd.DataFrame(index=range(0,1), columns=cols).fillna(0)"
+            ]
+        },
+        {
+            "name" : "DataFrame (from_dict)",
+            "snippet" : ["dict = {'YOM': YOM, 'leaseTerm': leaseTerm, 'downTime': downTime}",
+                "df = pd.DataFrame.from_dict(dict, orient='index')"
+            ]
+        },
+        {
+            "name" : "Merge",
+            "snippet" : ["df = pd.merge(df,dfMerge[['MSN','YOM']],how='left',on='MSN')",
+                "df.head()"
+            ]
+        },
+        {
+            "name" : "pivot_table",
+            "snippet" : ["table = pd.pivot_table(df,",
+                "                       index=['AircraftType','Year'],",
+                "                       columns=['Appraiser'],",
+                "                       values=['July 2017 CMV'],",
+                "                       margins=True,",
+                "                       margins_name='Total',",
+                "                       aggfunc=[len,np.mean])",
+                "table.columns = table.columns.droplevel(1)",
+                "table.columns = table.columns.droplevel(0)",
+                "table"
+            ]
+        },
+        {
+            "name" : "groupby",
+            "snippet" : ["pivot_mean = df.groupby(['Expenditure Type','Model and Series'])['Actuals'].mean() # or .sum()",
+                "pivot_mean"
+            ]
+        },
+        {
+            "name" : "groupby (sum and count)",
+            "snippet" : ["df.groupby(['OEM','A/C  Type'])['NBV', 'MSN'].agg(['count','sum'])"
+            ]
+        }
+    ]
+},
+{
+    "name" : "HTML",
+    "sub-menu" : [
+        {
+            "name" : "Link",
+            "snippet" : ["<a href=\"URL\" target=\"_blank\">TEXT</a>"]
+        },
+        {
+            "name" : "List",
+            "snippet" : ["<ul>",
+                "    <li>ITEM1</li>",
+                "    <li>ITEM2</li>",
+                "    <li>ITEM3</li>",
+                "</ul>"
+            ]
+        },
+        {
+            "name" : "Footer (with copyright)",
+            "snippet" : ["<!-- Footer -->",
+                "<section id=\"footer\">",
+                "    <div class=\"container\">",
+                "        <p class=\"copyright\">",
+                "            <br><br>&copy; 2010<script>new Date().getFullYear()>2010&&document.write(\"-\"+new Date().getFullYear());</script> NAME",
+                "        </p>",
+                "    </div>",
+                "</section>"
+            ]
+        }
+    ]
+},
+{
+    "name" : "mkudija",
+    "sub-menu" : [
+        {
+            "name" : "Item 1",
+            "snippet" : ["import something"]
+        },
+        {
+            "name" : "Item 2",
+            "snippet" : ["this"]
+        }
+    ]
+}
+]
+}
