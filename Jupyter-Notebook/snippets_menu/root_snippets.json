@@ -77,7 +77,7 @@
                         "    print('{} does not exist. Defining {}...'.format(queryName,queryName))",
                         "    define_on_demand_dataset(queryName, sql_query_text=SQL)",
                         "elif queryName in cliDF['query'].to_list():",
-                        "        print('{} does not exist. Defining {}...'.format(queryName,queryName))",
+                        "        print('{} already exists...'.format(queryName))",
                         "",
                         "rd.run_on_demand(queryName, parameters={})",
                         "",
