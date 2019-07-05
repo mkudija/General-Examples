@@ -1,5 +1,13 @@
 # Matplotlib
 
+# Figure
+
+## Change Figuresize (of existing)
+
+```python
+plt.gcf().set_size_inches(12,6)
+```
+
 # Axis Format
 ## 1,000 Format
 ```python
