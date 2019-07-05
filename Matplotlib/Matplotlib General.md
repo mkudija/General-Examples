@@ -6,6 +6,11 @@
 plt.gca().yaxis.set_major_formatter(plt.FuncFormatter(lambda x, loc: "{:,}".format(int(x))))
 ```
 
+## $XM Format
+```python
+plt.gca().yaxis.set_major_formatter(plt.FuncFormatter(lambda x, loc: "${:,}M".format(int(x/1e6))))
+```
+
 ## $ format
 ```python
 import matplotlib.ticker as mtick
