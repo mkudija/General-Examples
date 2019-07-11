@@ -21,9 +21,9 @@ order by t.table_schema;
 
 ```SQL
 SELECT 
-	t.device
+    t.device
 FROM 
-	database.table t
+    database.table t
 GROUP BY t.device
 ```
 
@@ -40,8 +40,8 @@ GROUP BY t.device
 
 ```SQL
 SELECT 
-	t.device
-	, COUNT(t.distance) AS value_count
+    t.device
+    ,COUNT(t.distance) AS value_count
 FROM 
 	database.table t
 GROUP BY t.device
@@ -65,6 +65,7 @@ CASE
     WHEN t.score BETWEEN 25 AND 49  THEN '25-49'
     WHEN t.score BETWEEN 50 AND 74  THEN '50-74'
     WHEN t.score BETWEEN 75 AND 100 THEN '75-100'
+    ELSE 'OTHER'
 END AS score_group
 ```
 
