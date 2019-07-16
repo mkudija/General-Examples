@@ -5,15 +5,6 @@
             "name" : "General",
             "sub-menu" : [
                 {
-                    "name" : "watermark",
-                    "snippet" : ["import pandas as pd",
-                        "import numpy as np",
-                        "",
-                        "%load_ext watermark",
-                        "%watermark -iv"
-                    ]
-                },
-                {
                     "name" : "General Imports",
                     "snippet" : ["import pandas as pd",
                         "import numpy as np",
@@ -23,6 +14,18 @@
                         "%matplotlib inline",
                         "import matplotlib.pyplot as plt",
                         "plt.style.use('root')",
+                        "",
+                        "import datetime as datetime",
+                        "date = datetime.datetime.now().date()",
+                        "",
+                        "%load_ext watermark",
+                        "%watermark -iv"
+                    ]
+                },
+                {
+                    "name" : "watermark",
+                    "snippet" : ["import pandas as pd",
+                        "import numpy as np",
                         "",
                         "%load_ext watermark",
                         "%watermark -iv"
@@ -85,6 +88,11 @@
                         "    rd.get_dataset_as_rows(queryName,",
                         "                           include_parameterized=True)",
                         ")",
+                        "",
+                        "savePath = str(date)+'_'+queryName+'.pkl'",
+                        "pd.to_pickle(df,savePath)",
+                        "print('Saved pickle: {}'.format(savePath))",
+                        "",
                         "df.tail()"
                     ]
                 },
