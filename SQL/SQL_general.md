@@ -88,3 +88,10 @@ SELECT
     )
 WHERE RANK = 1
 ```
+
+## Round
+
+`ROUND` rounds the number, and if you don't want the additional `.000` you can `CAST` as an integer:
+
+`CAST(ROUND(col_name, 0) AS INT) AS col_name_rounded`
+
