@@ -93,5 +93,32 @@ WHERE RANK = 1
 
 `ROUND` rounds the number, and if you don't want the additional `.000` you can `CAST` as an integer:
 
+## Decile
+
+```SQL
+SELECT 
+    score_decile, 
+    COUNT(score_decile) as count
+FROM (
+    SELECT
+        *,
+        CASE
+            WHEN score < 10 THEN '0-9'
+            WHEN score > 9 AND score < 20 THEN '10-19'
+            WHEN score > 19 AND score < 30 THEN '20-29'
+            WHEN score > 29 AND score < 40 THEN '30-39'
+            WHEN score > 39 AND score < 50 THEN '40-49'
+            WHEN score > 49 AND score < 60 THEN '50-59'
+            WHEN score > 59 AND score < 70 THEN '60-69'
+            WHEN score > 69 AND score < 80 THEN '70-79'
+            WHEN score > 79 AND score < 90 THEN '80-89'
+            WHEN score > 89 THEN '90-100'
+        END as score_decile
+    FROM database.table
+)
+GROUP BY score_decile
+ORDER BY score_decile
+```
+
 `CAST(ROUND(col_name, 0) AS INT) AS col_name_rounded`
 
