@@ -125,4 +125,16 @@ ORDER BY score_decile
 
 A quick trick is to `ROUND` with `-1` to approximate deciles if score is in the range from 0-100. This is not exact as your buckets will be `0-5`, `6-15`...`86-95`, `96-100` so the first and last buckets will be small, but if you are just comparing between two distributions and care less about the absolute distribution, this may be an easy trick.
 
-`ROUND(score, -1) AS score_decile_approx`
+```SQL
+SELECT 
+    score_decile_approx, 
+    COUNT(score_decile_approx) as count
+FROM (
+    SELECT
+        *,
+        ROUND(score, -1) AS score_decile_approx
+    FROM database.table
+)
+GROUP BY score_decile_approx
+ORDER BY score_decile_approx
+```
