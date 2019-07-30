@@ -101,7 +101,7 @@ To get actual deciles you can use a `CASE` statement:
 ```SQL
 SELECT 
     score_decile, 
-    COUNT(score_decile) as count
+    COUNT(score_decile) AS count
 FROM (
     SELECT
         *,
@@ -128,12 +128,30 @@ A quick trick is to `ROUND` with `-1` to approximate deciles if score is in the 
 ```SQL
 SELECT 
     score_decile_approx, 
-    COUNT(score_decile_approx) as count
+    COUNT(score_decile_approx) AS count
 FROM (
     SELECT
         *,
         ROUND(score, -1) AS score_decile_approx
     FROM database.table
+)
+GROUP BY score_decile_approx
+ORDER BY score_decile_approx
+```
+
+Finally, we may want the *rate* rather than the count, which we can get with the `RATIO_TO_REPORT(count) OVER () AS rate` command. This gives `rate` for each row as a fraction of the sum of count `count` column.
+
+```SQL
+SELECT 
+    score_decile_approx, 
+    COUNT(score_decile_approx) AS count,
+    RATIO_TO_REPORT(count) OVER () AS rate
+FROM (
+    SELECT
+        *,
+        ROUND(unmapped_score, -1) AS score_decile_approx
+    FROM database.table
+
 )
 GROUP BY score_decile_approx
 ORDER BY score_decile_approx
