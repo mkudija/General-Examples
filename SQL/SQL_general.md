@@ -93,8 +93,11 @@ WHERE RANK = 1
 
 `ROUND` rounds the number, and if you don't want the additional `.000` you can `CAST` as an integer:
 
+`CAST(ROUND(col_name, 0) AS INT) AS col_name_rounded`
+
 ## Decile
 
+To get actual deciles you can use a `CASE` statement:
 ```SQL
 SELECT 
     score_decile, 
@@ -120,5 +123,6 @@ GROUP BY score_decile
 ORDER BY score_decile
 ```
 
-`CAST(ROUND(col_name, 0) AS INT) AS col_name_rounded`
+A quick trick is to `ROUND` with `-1` to approximate deciles if score is in the range from 0-100. This is not exact as your buckets will be `0-5`, `6-15`...`86-95`, `96-100` so the first and last buckets will be small, but if you are just comparing between two distributions and care less about the absolute distribution, this may be an easy trick.
 
+`ROUND(score, -1) AS score_decile_approx`
