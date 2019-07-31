@@ -61,7 +61,7 @@ plt.ylim(ymin=0) # yaxis min
 
 # Save Fig
 ```python
-plt.savefig(path,bbox_inches='tight')
+plt.savefig(savePath, bbox_inches='tight', dpi=150)
 ```
 
 or 
@@ -70,6 +70,15 @@ or
 fig = ax.get_figure()
 fig.savefig(savePath, bbox_inches='tight', dpi=300) 
 ```
+
+or (from Pandas)
+
+```python
+plot = df.plot()
+fig = plot.get_figure()",
+fig.savefig(savePath, bbox_inches='tight', dpi=300) 
+```
+
 
 # Text & Annotations
 ## Chart Footer Notes
