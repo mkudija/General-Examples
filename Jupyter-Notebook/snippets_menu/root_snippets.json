@@ -256,6 +256,30 @@
     ]
 },
 {
+    "name" : "Matplotlib",
+    "sub-menu" : [
+        {
+            "name" : "From Pandas (bar)",
+            "snippet" : ["plot = df.plot.bar()"
+                        ]
+        },
+        {
+            "name" : "Annotate",
+            "snippet" : ["plt.gca().annotate(date, xy=(0, 0),  xycoords='figure fraction',",
+                "        xytext=(0.0, -0.2), textcoords='axes fraction',",
+                "        horizontalalignment='left', verticalalignment='center',",
+                "        )"
+            ]
+        },
+        {
+            "name" : "Save Fig",
+            "snippet" : ["fig = plot.get_figure()",
+                "fig.savefig('charts/fname.png', bbox_inches='tight', dpi=150)"
+            ]
+        }
+    ]
+},
+{
     "name" : "HTML",
     "sub-menu" : [
         {
