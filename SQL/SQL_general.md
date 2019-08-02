@@ -43,7 +43,7 @@ SELECT
     t.device
     ,COUNT(t.distance) AS value_count
 FROM 
-	database.table t
+    database.table t
 GROUP BY t.device
 ORDER BY value_count DESC
 ```
