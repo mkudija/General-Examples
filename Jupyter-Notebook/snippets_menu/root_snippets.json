@@ -274,7 +274,7 @@
         {
             "name" : "Save Fig",
             "snippet" : ["fig = plot.get_figure()",
-                "fig.savefig('charts/fname.png', bbox_inches='tight', dpi=150)"
+                "fig.savefig('charts/fname.png', bbox_inches='tight', dpi=150, transparent=True)"
             ]
         }
     ]
