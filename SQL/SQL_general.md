@@ -156,3 +156,14 @@ FROM (
 GROUP BY score_decile_approx
 ORDER BY score_decile_approx
 ```
+
+## Last 7 days of data
+
+```SQL
+SELECT 
+    *
+FROM 
+    database.table t
+WHERE
+    t.created_at > GETDATE() - INTERVAL '7 days'
+```
