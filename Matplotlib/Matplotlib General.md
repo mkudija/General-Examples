@@ -56,7 +56,7 @@ plt.gca().xaxis.grid(linestyle='-.',linewidth=.25)
 
 ## Axis Minimum
 ```python
-plt.ylim(ymin=0) # yaxis min
+plt.ylim(bottom=0) # yaxis min
 ```
 
 # Save Fig
