@@ -40,6 +40,16 @@ GROUP BY t.device
 
 ```SQL
 SELECT 
+    value_count_col
+    ,COUNT(id_col) AS value_count
+FROM 
+    database.table t
+GROUP BY 1
+ORDER BY 2 DESC
+```
+
+```SQL
+SELECT 
     t.device
     ,COUNT(t.distance) AS value_count
 FROM 
@@ -155,4 +165,15 @@ FROM (
 )
 GROUP BY score_decile_approx
 ORDER BY score_decile_approx
+```
+
+## Last 7 days of data
+
+```SQL
+SELECT 
+    *
+FROM 
+    database.table t
+WHERE
+    t.created_at > GETDATE() - INTERVAL '7 days'
 ```
