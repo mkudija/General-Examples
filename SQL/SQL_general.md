@@ -40,6 +40,16 @@ GROUP BY t.device
 
 ```SQL
 SELECT 
+    value_count_col
+    ,COUNT(id_col) AS value_count
+FROM 
+    database.table t
+GROUP BY 1
+ORDER BY 2 DESC
+```
+
+```SQL
+SELECT 
     t.device
     ,COUNT(t.distance) AS value_count
 FROM 
