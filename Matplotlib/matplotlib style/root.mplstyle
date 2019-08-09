@@ -216,7 +216,7 @@ axes.formatter.offset_threshold : 4      # When useoffset is True, the offset
 axes.unicode_minus  : True    # use unicode for the minus symbol
                               # rather than hyphen.  See
                               # http://en.wikipedia.org/wiki/Plus_and_minus_signs#Character_codes
-axes.prop_cycle: cycler('color',['FF5715','1D1D21','005EB8','00BF6F','9467bd','F4A82D','00B5E2','d62728','7FBD2C','63666A'])
+axes.prop_cycle: cycler('color',['999999','FF5715','1D1D21','138DE5','00A778','FFCD00','005EB8','9467bd','F4A82D','00B5E2','d62728','7FBD2C','63666A'])
                                            # color cycle for plot lines
                                            # as list of string colorspecs:
                                            # single letter, long name, or
@@ -424,14 +424,14 @@ savefig.dpi         : 100      # figure dots per inch
 savefig.facecolor   : w        # figure facecolor when saving
 savefig.edgecolor   : w        # figure edgecolor when saving
 savefig.format      : png      # png, ps, pdf, svg
-savefig.bbox        : standard # 'tight' or 'standard'.
+savefig.bbox        : tight    # 'tight' or 'standard'.
                                # 'tight' is incompatible with pipe-based animation
                                # backends but will workd with temporary file based ones:
                                # e.g. setting animation.writer to ffmpeg will not work,
                                # use ffmpeg_file instead
 savefig.pad_inches  : 0.1      # Padding to be used when bbox is set to 'tight'
 savefig.jpeg_quality: 95       # when a jpeg is saved, the default quality parameter.
-savefig.transparent : False    # setting that controls whether figures are saved with a
+savefig.transparent : True     # setting that controls whether figures are saved with a
                                # transparent background by default
 savefig.frameon : True
 savefig.orientation : portrait
