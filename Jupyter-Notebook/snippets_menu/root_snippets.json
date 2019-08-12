@@ -280,6 +280,51 @@
     ]
 },
 {
+    "name" : "Forecast",
+    "sub-menu" : [
+        {
+            "name" : "Prophet Forecast",
+            "snippet" : ["def prophet_forecast(df: pd.DataFrame,",
+                "                     x: str,",
+                "                     y: str,",
+                "                     periods: int",
+                "                    ):",
+                "",
+                "    This function generates a forecast using the Prophet library.",
+                "    :param df: a pandas dataframe of the time series data",
+                "    :param x: a string of the column name of the x (time) values",
+                "    :param y: a string of the column name of the y (forecasted) values",
+                "    :param periods: an int of the number of periods to forecast",
+                "    :return: display plots of the forecast",
+                "",
+                "",
+                "    # shape data",
+                "    dfP = df[[x,y]]",
+                "    dfP.columns = ['ds', 'y']",
+                "    ",
+                "    # create model",
+                "    m1 = Prophet()",
+                "    m1.fit(dfP)",
+                "    ",
+                "    # forecast",
+                "    future1 = m1.make_future_dataframe(periods=periods)",
+                "    forecast1 = m1.predict(future1)",
+                "    ",
+                "    m1.plot_components(forecast1)",
+                "    ",
+                "    m1.plot(forecast1)",
+                "    plt.gca().yaxis.set_major_formatter(plt.FuncFormatter(lambda x, loc: '{:,}'.format(int(x))))",
+                "    plt.title('Forecast: {}'.format(y))",
+                "    plt.xlabel('')",
+                "    plt.ylabel(y)",
+                "    plt.gca().yaxis.tick_right()",
+                "",
+                "prophet_forecast(df, x='DateTime', y='Sys', periods=30)"
+            ]
+        }
+    ]
+},
+{
     "name" : "HTML",
     "sub-menu" : [
         {
