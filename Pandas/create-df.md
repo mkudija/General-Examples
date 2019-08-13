@@ -1,5 +1,9 @@
 # Create DataFrame
 
+## Random
+
+`df = pd.DataFrame({ 'x': np.random.randn(100), 'y': np.random.randn(100) })`
+
 ## [`from_dict`](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.from_dict.html#pandas.DataFrame.from_dict)
 
 ```python

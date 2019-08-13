@@ -217,6 +217,11 @@
             ]
         },
         {
+            "name" : "DataFrame (random)",
+            "snippet" : ["df = pd.DataFrame({ 'x': np.random.randn(100), 'y': np.random.randn(100) })"
+            ]
+        },
+        {
             "name" : "DataFrame (from_dict)",
             "snippet" : ["dict = {'YOM': YOM, 'leaseTerm': leaseTerm, 'downTime': downTime}",
                 "df = pd.DataFrame.from_dict(dict, orient='index')"
