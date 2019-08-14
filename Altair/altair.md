@@ -18,3 +18,7 @@ alt.Chart(data.stocks.url).transform_window(
     color='symbol:N',
 )
 ```
+
+
+## Change axis label
+`alt.X('date:T', axis=alt.Axis(title=''))`
