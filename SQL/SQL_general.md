@@ -167,6 +167,22 @@ GROUP BY score_decile_approx
 ORDER BY score_decile_approx
 ```
 
+## Ratio over groupby
+
+Above we use the `RATIO_TO_REPORT` command to get a ratio rather than count. If we want a time series showing percent, and it is groupe by time (week, month, etc.), this is how you get a rate for each group rather than the whole table:
+
+```SQL
+    RATIO_TO_REPORT(account_count) OVER(PARTITION BY DATE_TRUNC('month', account_timestamp))
+```
+or
+
+```SQL
+    DATE_TRUNC('quarter', account_timestamp) AS x,
+    RATIO_TO_REPORT(account_count) OVER(PARTITION BY x)
+```
+
+
+
 ## Last 7 days of data
 
 ```SQL
