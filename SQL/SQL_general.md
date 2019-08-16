@@ -177,3 +177,27 @@ FROM
 WHERE
     t.created_at > GETDATE() - INTERVAL '7 days'
 ```
+
+## DATE_TRUNC
+
+To transform a timestamp into weekly or daily etc. data use `DATE_TRUNC()`. Available `datepart`s are listed [here](http://www.postgresqltutorial.com/postgresql-date_trunc/).
+
+```SQL
+SELECT
+    DATE_TRUNC('day', timestamp) AS day
+```
+or 
+```SQL
+SELECT
+    DATE_TRUNC('week', timestamp) AS week
+```
+or
+```SQL
+SELECT
+    DATE_TRUNC('month', timestamp) AS month
+```
+or
+```SQL
+SELECT
+    DATE_TRUNC('quarter', timestamp) AS quarter
+```
