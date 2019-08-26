@@ -217,3 +217,13 @@ or
 SELECT
     DATE_TRUNC('quarter', timestamp) AS quarter
 ```
+
+## Number of items and most recent in table
+
+```SQL
+SELECT 
+    COUNT(*), 
+    MAX(created_at) 
+FROM 
+    database.table
+```
