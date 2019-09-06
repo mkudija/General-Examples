@@ -269,6 +269,12 @@
                         ]
         },
         {
+            "name" : "From Pandas (histogram)",
+            "snippet" : ["df.plot.hist(bins=12)",
+                "# df.plot.bar(x='value',y='rate',legend=False,grid=False)"
+                        ]
+        },
+        {
             "name" : "Annotate",
             "snippet" : ["plt.gca().annotate(date, xy=(0, 0),  xycoords='figure fraction',",
                 "        xytext=(0.0, -0.2), textcoords='axes fraction',",
@@ -281,6 +287,31 @@
             "snippet" : ["fig = plot.get_figure()",
                 "fig.savefig('charts/fname.png', bbox_inches='tight', dpi=150, transparent=True)"
             ]
+        }
+    ]
+},
+{
+    "name" : "Altair",
+    "sub-menu" : [
+        {
+            "name" : "Altair Imports",
+            "snippet" : ["import altair as alt",
+                "alt.renderers.enable('notebook') # https://altair-viz.github.io/user_guide/renderers.html",
+                "alt.data_transformers.enable('json') # https://altair-viz.github.io/user_guide/faq.html"
+                        ]
+        },
+        {
+            "name" : "Histogram",
+            "snippet" : ["import altair as alt",
+                "from vega_datasets import data",
+                "",
+                "source = data.movies.url",
+                "",
+                "alt.Chart(source).mark_bar().encode(",
+                "    alt.X('IMDB_Rating:Q', bin=True),",
+                "    y='count()',",
+                ")"
+                        ]
         }
     ]
 },
