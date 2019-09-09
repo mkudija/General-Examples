@@ -227,3 +227,14 @@ SELECT
 FROM 
     database.table
 ```
+
+## Rolling Mean
+
+```SQL
+SELECT 
+    DATE_TRUNC('day', profile_timestamp) AS x,
+    COUNT(DISTINCT account_id) AS new_user_count,
+    AVG(new_user_count) OVER (ORDER BY x ROWS BETWEEN 4 PRECEDING AND CURRENT ROW) AS count_rolling
+FROM 
+    database.table
+```
