@@ -14,3 +14,6 @@
 
 *Note:* `A1` is always the same to reference first row
 
+## Get Quarter from Date
+
+`=ROUNDUP(MONTH(E5)/3,0)`
