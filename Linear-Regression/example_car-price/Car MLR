@@ -1,0 +1,339 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {
+    "ExecuteTime": {
+     "end_time": "2019-03-27T13:39:52.073888Z",
+     "start_time": "2019-03-27T13:39:50.706940Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "json        2.0.9\n",
+      "six         1.11.0\n",
+      "pandas      0.23.4\n",
+      "jsonschema  2.6.0\n",
+      "numpy       1.14.2\n",
+      "\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "/Users/matthewkudija/anaconda3/lib/python3.6/site-packages/statsmodels/compat/pandas.py:56: FutureWarning: The pandas.core.datetools module is deprecated and will be removed in a future version. Please use the pandas.tseries module instead.\n",
+      "  from pandas.core import datetools\n"
+     ]
+    }
+   ],
+   "source": [
+    "%matplotlib inline\n",
+    "from altair import *\n",
+    "import numpy as np\n",
+    "import pandas as pd\n",
+    "import statsmodels.api as sm\n",
+    "import statsmodels.formula.api as smf\n",
+    "import matplotlib.pyplot as plt\n",
+    "\n",
+    "import pandas as pd\n",
+    "import numpy as np\n",
+    "\n",
+    "%load_ext watermark\n",
+    "%watermark -iv"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {
+    "ExecuteTime": {
+     "end_time": "2019-03-27T13:39:52.130536Z",
+     "start_time": "2019-03-27T13:39:52.076839Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>Make</th>\n",
+       "      <th>Model</th>\n",
+       "      <th>Model2</th>\n",
+       "      <th>Year</th>\n",
+       "      <th>Price</th>\n",
+       "      <th>Odometer</th>\n",
+       "      <th>Color</th>\n",
+       "      <th>Link</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>16</th>\n",
+       "      <td>Toyota</td>\n",
+       "      <td>Sienna</td>\n",
+       "      <td>XLE</td>\n",
+       "      <td>2016</td>\n",
+       "      <td>22600</td>\n",
+       "      <td>63.0</td>\n",
+       "      <td>Grey</td>\n",
+       "      <td>https://columbus.craigslist.org/ctd/d/columbus...</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "      Make   Model Model2  Year  Price  Odometer Color  \\\n",
+       "16  Toyota  Sienna    XLE  2016  22600      63.0  Grey   \n",
+       "\n",
+       "                                                 Link  \n",
+       "16  https://columbus.craigslist.org/ctd/d/columbus...  "
+      ]
+     },
+     "execution_count": 2,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df = pd.read_excel('Sienna Data.xlsx')\n",
+    "df.tail(1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {
+    "ExecuteTime": {
+     "end_time": "2019-03-27T13:39:52.367935Z",
+     "start_time": "2019-03-27T13:39:52.132812Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "/Users/matthewkudija/anaconda3/lib/python3.6/site-packages/scipy/stats/stats.py:1334: UserWarning: kurtosistest only valid for n>=20 ... continuing anyway, n=11\n",
+      "  \"anyway, n=%i\" % int(n))\n"
+     ]
+    },
+    {
+     "data": {
+      "text/html": [
+       "<table class=\"simpletable\">\n",
+       "<caption>OLS Regression Results</caption>\n",
+       "<tr>\n",
+       "  <th>Dep. Variable:</th>          <td>Price</td>      <th>  R-squared:         </th> <td>   0.977</td>\n",
+       "</tr>\n",
+       "<tr>\n",
+       "  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.887</td>\n",
+       "</tr>\n",
+       "<tr>\n",
+       "  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   10.81</td>\n",
+       "</tr>\n",
+       "<tr>\n",
+       "  <th>Date:</th>             <td>Wed, 27 Mar 2019</td> <th>  Prob (F-statistic):</th>  <td>0.0874</td> \n",
+       "</tr>\n",
+       "<tr>\n",
+       "  <th>Time:</th>                 <td>09:39:52</td>     <th>  Log-Likelihood:    </th> <td> -90.838</td>\n",
+       "</tr>\n",
+       "<tr>\n",
+       "  <th>No. Observations:</th>      <td>    11</td>      <th>  AIC:               </th> <td>   199.7</td>\n",
+       "</tr>\n",
+       "<tr>\n",
+       "  <th>Df Residuals:</th>          <td>     2</td>      <th>  BIC:               </th> <td>   203.3</td>\n",
+       "</tr>\n",
+       "<tr>\n",
+       "  <th>Df Model:</th>              <td>     8</td>      <th>                     </th>     <td> </td>   \n",
+       "</tr>\n",
+       "<tr>\n",
+       "  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   \n",
+       "</tr>\n",
+       "</table>\n",
+       "<table class=\"simpletable\">\n",
+       "<tr>\n",
+       "          <td></td>            <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  \n",
+       "</tr>\n",
+       "<tr>\n",
+       "  <th>Intercept</th>        <td>-1.263e+06</td> <td> 6.76e+05</td> <td>   -1.868</td> <td> 0.203</td> <td>-4.17e+06</td> <td> 1.65e+06</td>\n",
+       "</tr>\n",
+       "<tr>\n",
+       "  <th>C(Model2)[T.XLE]</th> <td> 1241.5569</td> <td> 2696.077</td> <td>    0.461</td> <td> 0.690</td> <td>-1.04e+04</td> <td> 1.28e+04</td>\n",
+       "</tr>\n",
+       "<tr>\n",
+       "  <th>Color[T.Gold]</th>    <td> 1812.0989</td> <td> 2261.938</td> <td>    0.801</td> <td> 0.507</td> <td>-7920.235</td> <td> 1.15e+04</td>\n",
+       "</tr>\n",
+       "<tr>\n",
+       "  <th>Color[T.Grey]</th>    <td> 1491.4141</td> <td> 2578.761</td> <td>    0.578</td> <td> 0.621</td> <td>-9604.097</td> <td> 1.26e+04</td>\n",
+       "</tr>\n",
+       "<tr>\n",
+       "  <th>Color[T.Maroon]</th>  <td> 1140.0726</td> <td> 2255.823</td> <td>    0.505</td> <td> 0.663</td> <td>-8565.952</td> <td> 1.08e+04</td>\n",
+       "</tr>\n",
+       "<tr>\n",
+       "  <th>Color[T.Red]</th>     <td>   86.3787</td> <td> 3729.883</td> <td>    0.023</td> <td> 0.984</td> <td> -1.6e+04</td> <td> 1.61e+04</td>\n",
+       "</tr>\n",
+       "<tr>\n",
+       "  <th>Color[T.White]</th>   <td>-2305.0458</td> <td> 3544.335</td> <td>   -0.650</td> <td> 0.582</td> <td>-1.76e+04</td> <td> 1.29e+04</td>\n",
+       "</tr>\n",
+       "<tr>\n",
+       "  <th>Year</th>             <td>  638.3120</td> <td>  336.771</td> <td>    1.895</td> <td> 0.199</td> <td> -810.698</td> <td> 2087.322</td>\n",
+       "</tr>\n",
+       "<tr>\n",
+       "  <th>Odometer</th>         <td>  -78.5912</td> <td>   17.431</td> <td>   -4.509</td> <td> 0.046</td> <td> -153.593</td> <td>   -3.590</td>\n",
+       "</tr>\n",
+       "</table>\n",
+       "<table class=\"simpletable\">\n",
+       "<tr>\n",
+       "  <th>Omnibus:</th>       <td> 1.177</td> <th>  Durbin-Watson:     </th> <td>   0.974</td>\n",
+       "</tr>\n",
+       "<tr>\n",
+       "  <th>Prob(Omnibus):</th> <td> 0.555</td> <th>  Jarque-Bera (JB):  </th> <td>   0.713</td>\n",
+       "</tr>\n",
+       "<tr>\n",
+       "  <th>Skew:</th>          <td> 0.147</td> <th>  Prob(JB):          </th> <td>   0.700</td>\n",
+       "</tr>\n",
+       "<tr>\n",
+       "  <th>Kurtosis:</th>      <td> 1.788</td> <th>  Cond. No.          </th> <td>2.06e+06</td>\n",
+       "</tr>\n",
+       "</table>"
+      ],
+      "text/plain": [
+       "<class 'statsmodels.iolib.summary.Summary'>\n",
+       "\"\"\"\n",
+       "                            OLS Regression Results                            \n",
+       "==============================================================================\n",
+       "Dep. Variable:                  Price   R-squared:                       0.977\n",
+       "Model:                            OLS   Adj. R-squared:                  0.887\n",
+       "Method:                 Least Squares   F-statistic:                     10.81\n",
+       "Date:                Wed, 27 Mar 2019   Prob (F-statistic):             0.0874\n",
+       "Time:                        09:39:52   Log-Likelihood:                -90.838\n",
+       "No. Observations:                  11   AIC:                             199.7\n",
+       "Df Residuals:                       2   BIC:                             203.3\n",
+       "Df Model:                           8                                         \n",
+       "Covariance Type:            nonrobust                                         \n",
+       "====================================================================================\n",
+       "                       coef    std err          t      P>|t|      [0.025      0.975]\n",
+       "------------------------------------------------------------------------------------\n",
+       "Intercept        -1.263e+06   6.76e+05     -1.868      0.203   -4.17e+06    1.65e+06\n",
+       "C(Model2)[T.XLE]  1241.5569   2696.077      0.461      0.690   -1.04e+04    1.28e+04\n",
+       "Color[T.Gold]     1812.0989   2261.938      0.801      0.507   -7920.235    1.15e+04\n",
+       "Color[T.Grey]     1491.4141   2578.761      0.578      0.621   -9604.097    1.26e+04\n",
+       "Color[T.Maroon]   1140.0726   2255.823      0.505      0.663   -8565.952    1.08e+04\n",
+       "Color[T.Red]        86.3787   3729.883      0.023      0.984    -1.6e+04    1.61e+04\n",
+       "Color[T.White]   -2305.0458   3544.335     -0.650      0.582   -1.76e+04    1.29e+04\n",
+       "Year               638.3120    336.771      1.895      0.199    -810.698    2087.322\n",
+       "Odometer           -78.5912     17.431     -4.509      0.046    -153.593      -3.590\n",
+       "==============================================================================\n",
+       "Omnibus:                        1.177   Durbin-Watson:                   0.974\n",
+       "Prob(Omnibus):                  0.555   Jarque-Bera (JB):                0.713\n",
+       "Skew:                           0.147   Prob(JB):                        0.700\n",
+       "Kurtosis:                       1.788   Cond. No.                     2.06e+06\n",
+       "==============================================================================\n",
+       "\n",
+       "Warnings:\n",
+       "[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.\n",
+       "[2] The condition number is large, 2.06e+06. This might indicate that there are\n",
+       "strong multicollinearity or other numerical problems.\n",
+       "\"\"\""
+      ]
+     },
+     "execution_count": 3,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "model = smf.ols(formula='Price ~ C(Model2) + Year + Odometer + Color', data=df).fit()\n",
+    "model.summary()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {
+    "ExecuteTime": {
+     "end_time": "2019-03-27T13:39:52.399293Z",
+     "start_time": "2019-03-27T13:39:52.370308Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Predicted Price: $8,655\n"
+     ]
+    }
+   ],
+   "source": [
+    "# predictions\n",
+    "Model2   = 'LE'\n",
+    "Year     = 2010\n",
+    "Odometer = 150\n",
+    "Color    = 'Blue'\n",
+    "\n",
+    "df_pred = pd.DataFrame(index=range(0,1), columns=df.columns).fillna(0)\n",
+    "df_pred.loc[0,'Model2'] = Model2\n",
+    "df_pred.loc[0,'Year'] = Year\n",
+    "df_pred.loc[0,'Odometer'] = Odometer\n",
+    "df_pred.loc[0,'Color'] = Color\n",
+    "prediction = model.predict(df_pred)\n",
+    "price_pred = prediction[0]\n",
+    "print('Predicted Price: ${:0,.0f}'.format(price_pred))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
