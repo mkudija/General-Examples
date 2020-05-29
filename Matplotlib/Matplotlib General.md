@@ -19,11 +19,17 @@ plt.gca().yaxis.set_major_formatter(plt.FuncFormatter(lambda x, loc: "{:,}".form
 plt.gca().yaxis.set_major_formatter(plt.FuncFormatter(lambda x, loc: "${:,}M".format(int(x/1e6))))
 ```
 
-## $ format
+## $ Format
 ```python
 import matplotlib.ticker as mtick
 yticks = mtick.FormatStrFormatter('$%1.1fmm')
 plt.gca().yaxis.set_major_formatter(yticks)
+```
+
+## % Percent Format
+```python
+vals = ax.get_yticks()
+ax.set_yticklabels(['{:,.0%}'.format(x) for x in vals])
 ```
 
 ## Date Format
