@@ -5,6 +5,14 @@
 - [HTML](#html)
 
 <a id='excel'></a>
+
+## Import All Files in Directory
+
+```python
+import glob
+df = pd.concat([pd.read_csv(f) for f in glob.glob('data/*.csv')], ignore_index = True)
+```
+
 ## Excel
 See the [`pandas.read_excel`](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_excel.html) documentation.
 
