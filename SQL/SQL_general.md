@@ -245,3 +245,6 @@ Display the `%` symbol:
 ```SQL
     CONCAT(ROUND((edw_PLE_months_30_4 - edw_PLE_months_30) / edw_PLE_months_30 * 100, 2),'\%') AS percent_diff
 ```
+
+## Optimize Query
+If you run the query with `EXPLAIN` on top it will give you the query plan and how costly each step is.
