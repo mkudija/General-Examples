@@ -107,6 +107,8 @@ WHERE RANK = 1
 
 ## Decile
 
+Try the `NTILE` function ([link](https://www.geeksforgeeks.org/ntile-function-in-sql-server/)).
+
 To get actual deciles you can use a `CASE` statement:
 ```SQL
 SELECT 
