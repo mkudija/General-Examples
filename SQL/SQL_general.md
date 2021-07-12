@@ -251,5 +251,11 @@ Display the `%` symbol:
 earned_premium/SUM(earned_premium) OVER () as percent_of_total
 ```
 
+or
+
+```SQL
+RATIO_TO_REPORT(earned_premium) OVER () AS percent_of_total
+```
+
 ## Optimize Query
 If you run the query with `EXPLAIN` on top it will give you the query plan and how costly each step is.
