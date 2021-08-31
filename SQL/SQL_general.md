@@ -220,6 +220,15 @@ SELECT
     DATE_TRUNC('quarter', timestamp) AS quarter
 ```
 
+## Get month offset from current date (also end of month)
+- `CURRENT_DATE` to get current date
+- `DATEADD` to offset by a number of months
+- `LAST_DAY` to get last day of month
+
+```SQL
+policy_inception_month = LAST_DAY(DATEADD(MM,-6, CURRENT_DATE))
+```
+
 ## Number of items and most recent in table
 
 ```SQL
