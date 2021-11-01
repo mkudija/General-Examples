@@ -1,5 +1,11 @@
 # Create DataFrame
 
+## Empty
+
+```python
+df = pd.DataFrame(columns=['Date', 'Time'])
+```
+
 ## Random
 
 `df = pd.DataFrame({ 'x': np.random.randn(100), 'y': np.random.randn(100) })`
